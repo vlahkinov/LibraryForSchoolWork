@@ -1,34 +1,81 @@
 ﻿@using Domain.Dtos.Book
 @model BookDto
 
-<form method="post">
-    <div class="border p-3 mt-4">
-        <div class="border pb-2">
-            <h2 class="text-primary">Create Book</h2>
-            
-            <hr/>
-        </div>
-        <div class="mb-3">
-            <input asp-for="Title" class="form-control" placeholder="Title"/>
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <input asp-for="Author" class="form-control" placeholder="Author"/>
-            <span asp-validation-for="Author" class="text-danger"></span>
+<section class="vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-lg" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <h3 class="text-center text-primary mb-4">Create Book</h3>
+                        <p class="text-center text-muted mb-4">Provide the necessary information to add a new book</p>
 
+                        <form method="post">
+                            <div class="form-group mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input asp-for="Title" id="title" class="form-control" placeholder="Enter the book title" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="author" class="form-label">Author</label>
+                                <input asp-for="Author" id="author" class="form-control" placeholder="Enter the author's name" />
+                                <span asp-validation-for="Author" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="year" class="form-label">Year</label>
+                                <input asp-for="Year" id="year" class="form-control" placeholder="Enter the publication year" />
+                                <span asp-validation-for="Year" class="text-danger"></span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 150px;">Create</button>
+                                <a asp-controller="Book" asp-action="Index" class="btn btn-secondary btn-lg" style="width: 150px;">Back To List</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <input asp-for="Year" class="form-control" placeholder="Year"/>
-            <span asp-validation-for="Year" class="text-danger"></span>
-
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
-        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">Back To List</a>
     </div>
-</form>
+</section>
 
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
     }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px 15px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 10px;
+        transition: background 0.3s ease-in-out;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        border-radius: 10px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .btn-secondary:hover {
+            background-color: #6c757d;
+        }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

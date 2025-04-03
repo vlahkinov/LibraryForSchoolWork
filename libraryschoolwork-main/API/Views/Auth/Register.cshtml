@@ -4,98 +4,95 @@
 @{
     Layout = "_AuthLayout";
 }
-<section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-  <div class="mask d-flex justify-content-center h-100 gradient-custom-3 w-100">
-    <div class="container h-100 w-100">
-      <div class="row d-flex justify-content-center align-items-center h-100 w-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form method="post">
+<section class="vh-100 d-flex align-items-center justify-content-center bg-light" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-lg" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <h3 class="text-center text-primary mb-4">Create an Account</h3>
+                        <p class="text-center text-muted mb-5">Join us to enjoy exclusive features</p>
 
-                <div class="form-outline mb-4">
-                  <input type="text" asp-for="FullName" class="form-control form-control-lg" placeholder="Your name" />
-                  <span asp-validation-for="FullName" class="text-danger"></span>
+                        <form method="post">
+                            <div class="form-group mb-4">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" asp-for="FullName" id="fullName" class="form-control" placeholder="Enter your full name" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" asp-for="Email" id="email" class="form-control" placeholder="Enter your email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" asp-for="Password" id="password" class="form-control" placeholder="Enter your password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="passwordConfirmation" class="form-label">Confirm Password</label>
+                                <input type="password" asp-for="PasswordConfirmation" id="passwordConfirmation" class="form-control" placeholder="Confirm your password" />
+                                <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label">Role</label>
+                                <div>
+                                    <input type="radio" id="adminRole" name="RoleId" value="1" />
+                                    <label for="adminRole">Administrator</label><br />
+                                    <input type="radio" id="employeeRole" name="RoleId" value="2" />
+                                    <label for="employeeRole">Employee</label><br />
+                                    <input type="radio" id="clientRole" name="RoleId" value="3" />
+                                    <label for="clientRole">Client</label>
+                                </div>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms" />
+                                <label class="form-check-label" for="terms">
+                                    I agree to the <a href="#!" class="text-primary">Terms of Service</a>
+                                </label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            </div>
+                        </form>
+
+                        <div class="mt-4 text-center">
+                            <p class="text-muted">Already have an account? <a href="@Url.Action("Login", "Auth")" class="text-primary">Log In</a></p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-outline mb-4">
-                  <input type="email" asp-for="Email" class="form-control form-control-lg" placeholder="Your Email" />
-                  <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" asp-for="Password" class="form-control form-control-lg" placeholder = "Password"/>
-                  <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" asp-for="PasswordConfirmation" class="form-control form-control-lg" placeholder = "Password Confirmation" />
-                <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
-              </div>
-              
-    <div class="form-outline mb-4">
-    <p>Please select your Role</p>
-  <input type="radio" id="html" name="RoleId" value="1">
-  <label for="html">Administrator</label><br>
-  <input type="radio" id="css" name="RoleId" value="2">
-  <label for="css">Employee</label><br>
-  <input type="radio" id="javascript" name="RoleId" value="3">
-  <label for="javascript">Client</label>
-
-    </div>
-                <div class="form-check d-flex justify-content-center mb-5">
-                  <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    value=""
-                    id="form2Example3cg"
-                  />
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                </div>
-
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body" onclick="location.href='@Url.Action("Login", "Auth")'"><u>Login here</u></a></p>
-
-              </form>
-
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
+
 <style>
-    .gradient-custom-3 {
-  /* fallback for old browsers */
-  background: #84fab0;
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
-}
-.gradient-custom-4 {
-  /* fallback for old browsers */
-  background: #84fab0;
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
-}
-</style>
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px 15px;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        border: none;
+        border-radius: 10px;
+        transition: background 0.3s ease-in-out;
+    }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+    .card {
+        border: none;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

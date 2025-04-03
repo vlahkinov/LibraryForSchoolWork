@@ -1,50 +1,112 @@
 ﻿@using Domain.Dtos.Book
 @model List<BookDto>
 
-    <partial name="_Notification" />
-<div class="contrainer p-3">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h2 class="text-primary">Book List</h2>
-        </div>
-        <div class="col-6 text-end">
-            <a asp-controller="Book" asp-action="Create" class="btn btn-primary">Create New Book</a>
+<partial name="_Notification" />
+<section class="vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="container">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-6">
+                <h3 class="text-primary">Book List</h3>
+            </div>
+            <div class="col-md-6 text-end">
+                <a asp-controller="Book" asp-action="Create" class="btn btn-primary btn-lg">Create New Book</a>
+            </div>
         </div>
 
-    </div>       
+        <div class="card shadow-lg">
+            <div class="card-body p-4">
+                <table class="table table-striped table-hover table-bordered text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.Author</td>
+                                <td>@item.Year</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </a>
+                                        <a asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash3"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
-<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
-    <tr>
-      <th class="th-sm">
-          Title
-      </th>
-      <th class="th-sm">
-          Author
-      </th>
-      <th class="th-sm">
-          Year
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-      <td>@item.Title</td>
-      <td>@item.Author</td>
-      <td>@item.Year</td>
-      <td>
-          <div class="w-75 btn-group text-end" role="group" >
-              <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2">
-                  <i class="bi bi-pencil-square"></i>Edit </a>
-              <a asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2" width="5%">
-                  <i class="bi bi-trash3"></i> </a>
-          </div>
-      </td>
-    </tr>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
     }
-  </tbody>
-</table>
-</div>
+
+    h3 {
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-outline-primary {
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    .btn-outline-danger {
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-dark {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>

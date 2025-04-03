@@ -1,0 +1,27 @@
+﻿@using Domain.Dtos
+@model EmployeeDto
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="border pb-2">
+            <h2 class="text-primary">Delete Employe </h2>
+            <hr/>
+        </div>
+        <div class="mb-3">
+            <input asp-for="Title" disabled class="form-control"  />
+        </div>
+        <div class="mb-3">
+            <input asp-for="PhoneNumber" disabled class="form-control" />
+        </div>
+       
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">Back To List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

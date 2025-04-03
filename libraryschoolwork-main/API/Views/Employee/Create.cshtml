@@ -1,0 +1,39 @@
+﻿@using Domain.Dtos
+@model EmployeeDto
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="border pb-2">
+            <h2 class="text-primary">Create Employee</h2>
+            <hr/>
+        </div>
+        <div class="mb-3">
+            <input asp-for="Title" class="form-control" placeholder="Title"/>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number"/>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <input asp-for="AccountId" class="form-control" placeholder="Account Id"/>
+
+        </div>
+        <div class="mb-3">
+                <label asp-for="IsActive">What will he work</label><br>
+  <input type="radio" id="html" name="IsActive" value="true">
+  <label for="html">Seller</label><br>
+  <input type="radio" id="css" name="IsActive" value="false">
+  <label for="css">Manager</label><br>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">Back To List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
